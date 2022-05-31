@@ -4,30 +4,20 @@
 
 ## 1. Environment setting 
 
-// We move old version to ./v0/
-
 ### 1.0. Package
-* install requirements
-* replace folder timm/ to our timm/ folder (for ViT or Swin-T)  
+* Several important packages
+    - torch == 1.10.2+cu111
+    - trochvision == 0.11.3+cu111
+    
+* Replace folder timm/ to our timm/ folder (We made some changes to the original Timm framework, such as adding TA, etc)  
     
     #### pytorch model implementation [timm](https://github.com/rwightman/pytorch-image-models)
-    #### recommand [anaconda](https://www.anaconda.com/products/distribution)
-    #### recommand [weights and biases](https://wandb.ai/site)
-    #### [deepspeed](https://www.deepspeed.ai/getting-started/) // future works
 
 ### 1.1. Dataset
-In this paper, we use 2 large bird's datasets to evaluate performance:
-* [CUB-200-2011](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)
-* [NA-Birds](https://dl.allaboutbirds.org/nabirds)
+In this project, we use a large fungi's datasets from this challenge to evaluate performance:
+* [Fungi2022](https://www.kaggle.com/competitions/fungiclef2022/data)
 
-### 1.2. Our pretrained model
-
-Download the pretrained model from this url: https://drive.google.com/drive/folders/1ivMJl4_EgE-EVU_5T8giQTwcNQ6RPtAo?usp=sharing      
-
-* our pretrained model in backup/V2/ (backup/... is OLD version)
-* resnet50_miil_21k.pth and vit_base_patch16_224_miil_21k.pth are imagenet21k pretrained model (place these file under models/), thanks to https://github.com/Alibaba-MIIL/ImageNet21K/blob/main/MODEL_ZOO.md !!
-
-### 1.3. OS
+### 1.2. OS
 - [x] Windows10
 - [x] Ubuntu20.04
 - [x] macOS (CPU only)
@@ -42,23 +32,23 @@ Download the pretrained model from this url: https://drive.google.com/drive/fold
 ### 2.1. data
 train data and test data structure:  
 ```
-├── tain/
-│   ├── class1/
-│   |   ├── img001.jpg
-│   |   ├── img002.jpg
-│   |   └── ....
-│   ├── class2/
-│   |   ├── img001.jpg
-│   |   ├── img002.jpg
-│   |   └── ....
+├── DF20/
+│   ├── img20001.jpg
+│   ├── img20002.jpg
+│   └── ....
+├── DF21/
+│   ├── img21001.jpg
+│   ├── img21002.jpg
 │   └── ....
 └──
 ```
+  
+Training sets and test sets are distributed with CSV labels corresponding to them.
 
 ### 2.2. configuration
 you can directly modify yaml file (in ./configs/)
 
-### 2.3. run
+### 2.3. run.
 ```
 python main.py --c ./configs/CUB200_SwinT.yaml
 ```
@@ -73,14 +63,13 @@ More detail in [how_to_build_pim_model.ipynb](./how_to_build_pim_model.ipynb)
 comment out main.py line 66
 ```
 model = torch.nn.DataParallel(model, device_ids=None)
-```
-
-### 2.6.  automatic mixed precision (amp)
-use_amp: True, training time about 3-hours.  
-use_amp: False, training time about 5-hours.  
+```  
 
 ## 3. Evaluation
-If you want to evaluate our pretrained model (or your model), please give provide configs/eval.yaml (or costom yaml file is fine)
+For details, see test.sh
+```
+sh test.sh
+```
 
 ### 3.1. please check yaml
 set yaml (configuration file)
@@ -123,6 +112,3 @@ python heat.py --pretrained ./best.pt --img ./imgs/001.jpg
 ### Acknowledgment
 
 * Thanks to [timm](https://github.com/rwightman/pytorch-image-models) for Pytorch implementation.
-
-* This work was financially supported by the National Taiwan Normal University (NTNU) within the framework of the Higher Education Sprout Project by the Ministry of Education(MOE) in Taiwan, sponsored by Ministry of Science and Technology, Taiwan, R.O.C. under Grant no. MOST 110-
-2221-E-003-026, 110-2634-F-003 -007, and 110-2634-F-003 -006. In addition, we thank to National Center for Highperformance Computing (NCHC) for providing computational and storage resources.
