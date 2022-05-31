@@ -152,7 +152,7 @@ run model_ensemble.ipynb
 
 
 ## 5. Challenge's final model checkpoints
-It can be downloaded from Google Cloud Disk:
+It can be downloaded from Google Cloud Disk: https://drive.google.com/file/d/1v9SlsjXXKI5kizg9BTMWfA9faaawAgpv/view?usp=sharing
 
   
 It can be directly used for model ensemble reasoning.
