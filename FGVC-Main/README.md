@@ -49,65 +49,113 @@ Training sets and test sets are distributed with CSV labels corresponding to the
 you can directly modify yaml file (in ./configs/)
 
 ### 2.3. run.
-```
-python main.py --c ./configs/CUB200_SwinT.yaml
-```
-model will save in ./records/{project_name}/{exp_name}/backup/
+take the SwinTransformer training process as an example.
 
-
-### 2.4. about costom model
-Building model refers to ./models/builder.py   
-More detail in [how_to_build_pim_model.ipynb](./how_to_build_pim_model.ipynb)
-
-### 2.5. multi-gpus
-comment out main.py line 66
+1.  we train a basic model by dividing the training set and verification set 9:1
 ```
-model = torch.nn.DataParallel(model, device_ids=None)
+python train.py ./Fungidata/DF20 -c configs/swin_large_384.yaml \
+        --freeze-layer 2 \
+        --batch-size 32 \
+        --lr 0.01 \
+        --decay-rate 0.9 \
+        --output ./output/Swin-TF/DF20/freeze_layer_2
+```
+
+2. Add data augment and continue fine-tuning
+```
+python train.py ./Fungidata/DF20 -c configs/swin_large_384.yaml \
+        --output ./output/Swin-TF/DF20/All_aug/freeze_layer_2 \
+        --initial-checkpoint ./output/Swin-TF/DF20/freeze_layer_2/20220430-123449-swin_large_patch4_window12_384-384/Best_Top1-ACC.pth.tar \
+        --freeze-layer 2 \
+        --lr 0.001 \
+        --batch-size 32 \
+        --warmup-epochs 0 \
+        --cutmix 1 \
+        --color-jitter 0.4 \
+        --reprob 0.25 \
+        --aa trivial \
+        --decay-rate 0.9
+```
+
+3. Modify the loss function and continue fine-tuning
+```
+python train.py ./Fungidata/DF20 -c configs/swin_large_384.yaml \
+        --output ./output/Swin-TF/DF20/new_loss/freeze_layer_2 \
+        --initial-checkpoint ./output/Swin-TF/DF20/All_aug/freeze_layer_2/20220430-123449-swin_large_patch4_window12_384-384/Best_Top1-ACC.pth.tar \
+        --freeze-layer 2 \
+        --lr 0.001 \
+        --batch-size 32 \
+        --warmup-epochs 0 \
+        --cutmix 1 \
+        --color-jitter 0.4 \
+        --reprob 0.25 \
+        --aa trivial \
+        --decay-rate 0.9 \
+        --Focalloss
+```
+
+4. Fine-tuning with full data sets
+```
+python train_all.py ./Fungidata/DF20 -c configs/swin_large_384.yaml \
+         --batch-size 32 \
+         --img-size 384 \
+         --output ./output/Swin-TF/DF20/All_data/swin_large_384 \
+         --freeze-layer 2 \
+         --initial-checkpoint ./output/Swin-TF/DF20/new_loss/freeze_layer_2/20220502-114033-swin_large_patch4_window12_384-384/Best_Top1-ACC.pth.tar \
+         --lr 0.001 \
+         --cutmix 1 \
+         --color-jitter 0.4 \
+         --reprob 0.25 \
+         --aa trivial \
+         --decay-rate 0.1 \
+         --warmup-epochs 0 \
+         --epochs 24 \
+         --sched multistep \
+         --checkpoint-hist 24 \
+         --Focalloss
+```
+
+5. Two-stage training
+```
+python train_all.py ./Fungidata/DF20 -c configs/swin_large_384.yaml \
+         --batch-size 32 \
+         --img-size 384 \
+         --output ./output/Swin-TF/DF20/two_stage/swin_large_384 \
+         --freeze-layer 2 \
+         --initial-checkpoint ./output/Swin-TF/DF20/All_data/freeze_layer_2/20220504-115867-swin_large_patch4_window12_384-384/Best_Top1-ACC.pth.tar \
+         --lr 0.001 \
+         --cutmix 1 \
+         --color-jitter 0.4 \
+         --reprob 0.25 \
+         --aa trivial \
+         --decay-rate 0.1 \
+         --warmup-epochs 0 \
+         --epochs 5 \
+         --sched multistep \
+         --Focalloss
+```
+
+### 2.4. multi-gpus
+change train.sh
+```
+python -m torch.distributed.launch --nproc_per_node=4 train_all.py
 ```  
 
 ## 3. Evaluation
-For details, see test.sh
+for details, see test.sh
 ```
 sh test.sh
 ```
 
-### 3.1. please check yaml
-set yaml (configuration file)
-Key           | Value  | Description | 
---------------|:------|:------------| 
-train_root    | ~      | set value to ~ (null) means this is not in training mode.  |
-val_root  | ../data/eval/  |  path to validation samples |
-pretrained  | ./pretrained/best.pt  |   pretrained model path |
+## 4. Model Ensemble
+run model_ensemble.ipynb
 
 
-../data/eval/ folder structure:  
-```
-├── eval/
-│   ├── class1/
-│   |   ├── img001.jpg
-│   |   ├── img002.jpg
-│   |   └── ....
-│   ├── class2/
-│   |   ├── img001.jpg
-│   |   ├── img002.jpg
-│   |   └── ....
-│   └── ....
-└──
-```
+## 5. Challenge's final model checkpoints
+It can be downloaded from Google Cloud Disk:
 
-### 3.2. run
-```
-python main.py --c ./configs/eval.yaml
-```
-results will show in terminal and been save in ./records/{project_name}/{exp_name}/eval_results.txt
-
-## 4. HeatMap
-```
-python heat.py --pretrained ./best.pt --img ./imgs/001.jpg
-```
-![visualization](./imgs/test1_heat.jpg)
-
-- - - - - - 
+  
+It can be directly used for model ensemble reasoning.
 
 ### Acknowledgment
 
