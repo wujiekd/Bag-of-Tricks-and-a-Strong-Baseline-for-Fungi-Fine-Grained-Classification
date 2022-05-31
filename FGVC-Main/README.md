@@ -151,7 +151,7 @@ sh test.sh
 run model_ensemble.ipynb
 
 
-## 5. Challenge's final model checkpoints
+## 5. Challenge's final checkpoints
 It can be downloaded from Google Cloud Disk: https://drive.google.com/file/d/1v9SlsjXXKI5kizg9BTMWfA9faaawAgpv/view?usp=sharing
 
   
