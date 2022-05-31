@@ -125,173 +125,67 @@
 #             --mode 1
 
 
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_0 \
-#              --model swin_base_patch4_window12_384 \
-#              --img-size 384 \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_base_extra2_data1_largelr/checkpoint-4.pth.tar  \
-#              --output_path ./result/Swin_base/balance_nocrop_0.csv \
-#              --scoreoutput_path ./score_result/Swin_base/balance_nocrop_0.csv \
-#              --batch-size 32 \
-#              --crop-pct 1.0
 
 
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_1 \
-#              --model swin_base_patch4_window12_384 \
-#              --img-size 384 \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_base_extra2_data1_largelr/checkpoint-4.pth.tar  \
-#              --output_path ./result/Swin_base/balance_nocrop_1.csv \
-#              --scoreoutput_path ./score_result/Swin_base/balance_nocrop_1.csv \
-#              --batch-size 32 \
-#              --crop-pct 1.0
-
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_2 \
-#              --model swin_base_patch4_window12_384 \
-#              --img-size 384 \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_base_extra2_data1_largelr/checkpoint-4.pth.tar  \
-#              --output_path ./result/Swin_base/balance_nocrop_2.csv \
-#              --scoreoutput_path ./score_result/Swin_base/balance_nocrop_2.csv \
-#              --batch-size 32 \
-#              --crop-pct 1.0
-
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_3 \
-#              --model swin_base_patch4_window12_384 \
-#              --img-size 384 \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_base_extra2_data1_largelr/checkpoint-4.pth.tar  \
-#              --output_path ./result/Swin_base/balance_nocrop_3.csv \
-#              --scoreoutput_path ./score_result/Swin_base/balance_nocrop_3.csv \
-#              --batch-size 32 \
-#              --crop-pct 1.0
-
-
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_0 \
-#              --model swin_large_patch4_window12_384 \
-#              --img-size 384 \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_large_extra2_data1_largelr/checkpoint-4.pth.tar  \
-#              --output_path ./result/Swin_large/balance_nocrop_0.csv \
-#              --scoreoutput_path ./score_result/Swin_large/balance_nocrop_0.csv \
-#              --batch-size 16 \
-#              --crop-pct 1.0
-
-
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_1 \
-#              --model swin_large_patch4_window12_384 \
-#              --img-size 384 \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_large_extra2_data1_largelr/checkpoint-4.pth.tar  \
-#              --output_path ./result/Swin_large/balance_nocrop_1.csv \
-#              --scoreoutput_path ./score_result/Swin_large/balance_nocrop_1.csv \
-#              --batch-size 16 \
-#              --crop-pct 1.0
-
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_2 \
-#              --model swin_large_patch4_window12_384 \
-#              --img-size 384 \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_large_extra2_data1_largelr/checkpoint-4.pth.tar  \
-#              --output_path ./result/Swin_large/balance_nocrop_2.csv \
-#              --scoreoutput_path ./score_result/Swin_large/balance_nocrop_2.csv \
-#              --batch-size 16 \
-#              --crop-pct 1.0
-
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_3 \
-#              --model swin_large_patch4_window12_384 \
-#              --img-size 384 \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_large_extra2_data1_largelr/checkpoint-4.pth.tar  \
-#              --output_path ./result/Swin_large/balance_nocrop_3.csv \
-#              --scoreoutput_path ./score_result/Swin_large/balance_nocrop_3.csv \
-#              --batch-size 16 \
-#              --crop-pct 1.0
+python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21 \
+             --model swin_base_patch4_window12_384 \
+             --img-size 384 \
+             --num-classes 1604 \
+             --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/swin_base_extra2_data1_largelr/checkpoint-4.pth.tar  \
+             --output_path ./result/Swin_base/balance_nocrop_1.csv \
+             --scoreoutput_path ./score_result/Swin_base/balance_nocrop_1.csv \
+             --batch-size 32 \
+             --crop-pct 1.0
 
 
 
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_0 \
-#              --model tf_efficientnet_b6_ns \
-#              --num-classes 1604 \
-#              --checkpoint /home/lkd22/fungi/Fungi_data/output/eff_b6/freeze_layer_6/balance/20220516-024949-tf_efficientnet_b6_ns-528/checkpoint-4.pth.tar  \
-#              --output_path ./result/eff_b6/balance_nocrop_0.csv \
-#              --scoreoutput_path ./score_result/eff_b6/balance_nocrop_0.csv \
-#              --batch-size 8 \
-#              --crop-pct 1.0
+
+
+python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21 \
+             --model swin_large_patch4_window12_384 \
+             --img-size 384 \
+             --num-classes 1604 \
+             --checkpoint ./model/swin_large/checkpoint-4.pth.tar  \
+             --output_path ./result/Swin_large/balance_nocrop_3.csv \
+             --scoreoutput_path ./score_result/Swin_large/balance_nocrop_3.csv \
+             --batch-size 16 \
+             --crop-pct 1.0
 
 
 
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_1 \
-#              --model tf_efficientnet_b6_ns \
-#              --num-classes 1604 \
-#              --checkpoint /home/lkd22/fungi/Fungi_data/output/eff_b6/freeze_layer_6/balance/20220516-024949-tf_efficientnet_b6_ns-528/checkpoint-4.pth.tar  \
-#              --output_path ./result/eff_b6/balance_nocrop_1.csv \
-#              --scoreoutput_path ./score_result/eff_b6/balance_nocrop_1.csv \
-#              --batch-size 8 \
-#              --crop-pct 1.0
-
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_2 \
-#              --model tf_efficientnet_b6_ns \
-#              --num-classes 1604 \
-#              --checkpoint /home/lkd22/fungi/Fungi_data/output/eff_b6/freeze_layer_6/balance/20220516-024949-tf_efficientnet_b6_ns-528/checkpoint-4.pth.tar  \
-#              --output_path ./result/eff_b6/balance_nocrop_2.csv \
-#              --scoreoutput_path ./score_result/eff_b6/balance_nocrop_2.csv \
-#              --batch-size 8 \
-#              --crop-pct 1.0
-
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_3 \
-#              --model tf_efficientnet_b6_ns \
-#              --num-classes 1604 \
-#              --checkpoint /home/lkd22/fungi/Fungi_data/output/eff_b6/freeze_layer_6/balance/20220516-024949-tf_efficientnet_b6_ns-528/checkpoint-4.pth.tar  \
-#              --output_path ./result/eff_b6/balance_nocrop_3.csv \
-#              --scoreoutput_path ./score_result/eff_b6/balance_nocrop_3.csv \
-#              --batch-size 8 \
-#              --crop-pct 1.0
-
-python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_0 \
-              --model tf_efficientnet_b7_ns \
-              --num-classes 1604 \
-              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/eff_b7/checkpoint-4.pth.tar  \
-              --output_path ./result/eff_b7/balance_nocrop_0.csv \
-              --scoreoutput_path ./score_result/eff_b7/balance_nocrop_0.csv \
-              --batch-size 8 \
-              --crop-pct 1.0
 
 
 
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_1 \
-#              --model tf_efficientnet_b7_ns \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/eff_b7/checkpoint-4.pth.tar  \
-#              --output_path ./result/eff_b7/balance_nocrop_1.csv \
-#              --scoreoutput_path ./score_result/eff_b7/balance_nocrop_1.csv \
-#              --batch-size 8 \
-#              --crop-pct 1.0
+python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21 \
+             --model tf_efficientnet_b6_ns \
+             --num-classes 1604 \
+             --checkpoint ./model/eff_b6/checkpoint-4.pth.tar  \
+             --output_path ./result/eff_b6/balance_nocrop_3.csv \
+             --scoreoutput_path ./score_result/eff_b6/balance_nocrop_3.csv \
+             --batch-size 8 \
+             --crop-pct 1.0
 
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_2 \
-#              --model tf_efficientnet_b7_ns \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/eff_b7/checkpoint-4.pth.tar  \
-#              --output_path ./result/eff_b7/balance_nocrop_2.csv \
-#              --scoreoutput_path ./score_result/eff_b7/balance_nocrop_2.csv \
-#              --batch-size 8 \
-#              --crop-pct 1.0
 
-#
-#python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21_3 \
-#              --model tf_efficientnet_b7_ns \
-#              --num-classes 1604 \
-#              --checkpoint /home/data1/lkd/Fungi_data/Fungidata/linshi_model/eff_b7/checkpoint-4.pth.tar  \
-#              --output_path ./result/eff_b7/balance_nocrop_3.csv \
-#              --scoreoutput_path ./score_result/eff_b7/balance_nocrop_3.csv \
-#              --batch-size 8 \
-#              --crop-pct 1.0
+
+
+
+python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21 \
+             --model tf_efficientnet_b7_ns \
+             --num-classes 1604 \
+             --checkpoint ./model/eff_b7/checkpoint-4.pth.tar  \
+             --output_path ./result/eff_b7/balance_nocrop_3.csv \
+             --scoreoutput_path ./score_result/eff_b7/balance_nocrop_3.csv \
+             --batch-size 8 \
+             --crop-pct 1.0
+             
+             
+ 
+python test.py /home/data1/lkd/Fungi_data/Fungidata/DF21 \
+             --model beit_large_patch16_512 \
+             --img-size 512 \
+             --num-classes 1604 \
+             --checkpoint ./model/beit/checkpoint-3.pth.tar  \
+             --output_path ./result/beit/balance_nocrop_3.csv \
+             --scoreoutput_path ./score_result/beit/balance_nocrop_3.csv \
+             --batch-size 4 \
+             --crop-pct 1.0
