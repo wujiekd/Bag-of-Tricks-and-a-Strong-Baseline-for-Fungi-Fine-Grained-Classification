@@ -5,4 +5,4 @@ The 3rd place in the CVPR2022 FGVC × FUNGI  challenge
 
 FGVC-Main is the main code for the challenge.
 
-FGVC-PIM is a useful trick we tried, but due to limited time and resources, we don;t use it in our final scheme.
+FGVC-PIM is a useful trick we tried, but due to limited time and resources, we don't use it in our final scheme.
