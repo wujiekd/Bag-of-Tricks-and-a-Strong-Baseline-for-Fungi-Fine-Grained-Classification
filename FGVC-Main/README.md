@@ -147,11 +147,14 @@ for details, see test.sh
 sh test.sh
 ```
 
+Use the sh test.sh command to execute the reasoning file (the checkpoint in the google cloud disk will be used, please download it in 5. Challenge's final checkpoints and logits)
+
 ## 4. Model Ensemble
 run model_ensemble.ipynb
 
+Execute 3. Evaluation to get the logits file required by model_ensemble.ipynb (you can also download it directly from google cloud disk, see 5. Challenge's final checkpoints and logits for details)
 
-## 5. Challenge's final checkpoints
+## 5. Challenge's final checkpoints and logits
 It can be downloaded from Google Cloud Disk: https://drive.google.com/file/d/1v9SlsjXXKI5kizg9BTMWfA9faaawAgpv/view?usp=sharing
 
   
